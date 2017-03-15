@@ -8,8 +8,6 @@ tags = ["May Day", "outreach", "printing", "programming"]
 
 +++
 
-### The Result
-
 Alright, things just got serious with Portland May Day Coalition outreach letters  :)
 
 There are about 150 orgs this is going out to, and I'll be damned if I do any of the envelope / letter creation manually.  The irony is it has probly taken longer to automate than suffer through the manual tedium, but it'll be really useful (and save significant time) going forward.
