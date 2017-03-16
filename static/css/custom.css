@@ -1,0 +1,5 @@
+body {
+    /* Thanks Atle Moe!
+       https://www.toptal.com/designers/subtlepatterns/rice-paper-3/ */
+    background-image: url("/images/backgrounds/ricepaper.png");
+}
