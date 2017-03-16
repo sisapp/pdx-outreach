@@ -2,9 +2,12 @@
   <div class="mt2 wrap">
     <div class="measure">
       <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
+
       <nav class="site-nav right">
-      {{ partial "navigation.html" . }}
+        <img src="/images/logo.png" width=100 height=100 />
+        {{ partial "navigation.html" . }}
       </nav>
+
       <div class="clearfix"></div>
     </div>
   </div>
