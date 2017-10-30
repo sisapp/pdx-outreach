@@ -1,9 +1,10 @@
 module ApplicationHelper
-  def login?
-    !session[:username].nil?
+  def logged_in?
+    !session[:user_id].nil?
   end
 
-  def username
-    session[:username]
+  def current_user
+    return unless logged_in?
+    @current_user ||= User.find(session[:user_id])
   end
 end
