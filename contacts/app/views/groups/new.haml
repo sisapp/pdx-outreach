@@ -1,0 +1,20 @@
+= haml :'groups/header_links'
+
+%form.pure-form.pure-form-stacked{ method: 'POST',
+                                   action: '/groups/new' }
+  %fieldset
+    %label{ for: :name }
+      Name:
+    %input#name{ type: 'text', placeholder: 'Group name',
+                 name: 'group[name]' }
+
+    %label{ for: :description }
+      Description:
+    %textarea#description{ type: 'text',
+                           placeholder: 'brief description of group',
+                           name: 'group[description]',
+                           rows: 10,
+                           cols: 30 }
+
+    %button.pure-button.pure-button-primary{ type: 'submit' }
+      Submit

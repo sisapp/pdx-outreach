@@ -6,8 +6,9 @@
       Org Contacts
     %meta{ charset: 'utf-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    %link{ rel: 'stylesheet', href: 'css/pure-min.css' }
-    %link{ rel: 'stylesheet', href: 'css/layouts/side-menu.css' }
+    %link{ rel: 'stylesheet', href: '/css/pure-min.css' }
+    %link{ rel: 'stylesheet', href: '/css/layouts/side-menu.css' }
+
   %body
     %div#layout
       %a.menu-link#menuLink{ href: "#menu" }
@@ -25,12 +26,9 @@
 
     %div#main
       %div.header
-        %h1= @page_title
-        %h2
-          A subtitle for your page goes here
+        %h1= @page_title if @page_title
+        %h2= @page_subtitle if @page_subtitle
       %div.content
-        %h2.content-subhead
-          How to use this layout
         = yield
         -# Load javascript at end so as not to delay earlier content
-        %script{ src: 'js/ui.js' }
+        %script{ src: '/js/ui.js' }
