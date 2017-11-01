@@ -1,0 +1,12 @@
+%table.pure-table.pure-table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Creation date
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.name
+        %td= group.description
+        %td= group.created_at

@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    current_user ? 'curr user' : 'no user'
+    haml :index
   end
 
   get '/login' do

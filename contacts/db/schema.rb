@@ -15,9 +15,51 @@ ActiveRecord::Schema.define(version: 20171030070102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone"
+    t.string "zip"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.index ["email"], name: "index_contacts_on_email", unique: true
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "groups_contacts", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["contact_id"], name: "index_groups_contacts_on_contact_id"
+    t.index ["group_id", "contact_id"], name: "index_groups_contacts_on_group_id_and_contact_id", unique: true
+    t.index ["group_id"], name: "index_groups_contacts_on_group_id"
+  end
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", unique: true
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "name", null: false
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "groups_contacts", "contacts"
+  add_foreign_key "groups_contacts", "groups"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
 end

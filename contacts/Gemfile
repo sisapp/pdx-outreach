@@ -11,4 +11,5 @@ gem 'sinatra', '~> 2.0.0'
 
 group :development do
   gem 'rerun', '~> 0.11.0'
+  gem 'racksh', '~> 1.0.0'
 end
