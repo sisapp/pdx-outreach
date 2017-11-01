@@ -1,7 +1,37 @@
 !!! 5
 
-%html
+%html{ lang: 'en' }
   %head
-    %title Org Contacts
+    %title
+      Org Contacts
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    %link{ rel: 'stylesheet', href: 'css/pure-min.css' }
+    %link{ rel: 'stylesheet', href: 'css/layouts/side-menu.css' }
   %body
-    = yield
+    %div#layout
+      %a.menu-link#menuLink{ href: "#menu" }
+        %div#menu
+          %div.pure-menu
+            %a.pure-menu-heading{ href: "#" }
+              Company
+            %ul.pure-menu-list
+              %li.pure-menu-item
+                %a.pure-menu-link{ href: "#" }
+                  Home
+              %li.pure-menu-item
+                %a.pure-menu-item{ href: "#" }
+                  About
+
+    %div#main
+      %div.header
+        %h1
+          Page Title
+        %h2
+          A subtitle for your page goes here
+      %div.content
+        %h2.content-subhead
+          How to use this layout
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        = yield

@@ -1,8 +1,12 @@
-%form{ method: 'POST', action: '/login' }
-  %p
-    Email:
-    %input{ name: 'user[email]' }
-  %p
-    Password:
-    %input{ name: 'user[password]' }
-  %input{ type: 'submit' }
+%form.pure-form.pure-form-stacked{ method: 'POST', action: '/login' }
+  %fieldset
+    %label{ for: 'email' }
+      Email:
+    %input#email{ type: 'email', placeholder: 'Email', name: 'user[email]' }
+
+    %label{ for: 'password' }
+      Password:
+    %input#password{ type: 'password', placeholder: 'Password', name: 'user[password]' }
+
+    %button.pure-button.pure-button-primary{ type: 'submit' }
+      Submit

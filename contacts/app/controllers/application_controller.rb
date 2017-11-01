@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
 
   # set folder for templates to ../views, but make the path absolute
   set :views, File.expand_path('../../views', __FILE__)
+  set :root, File.expand_path('../../..', __FILE__)
 
   # don't enable logging when running tests
   configure :production, :development do
@@ -29,7 +30,13 @@ class ApplicationController < Sinatra::Base
   get '/signup' do
     haml :'login/signup'
   end
+
   post '/signup' do
-    puts params.inspect
+    user = User.new(:username => params[:username], :password => params[:password])
+    if user.save
+      redirect "/login"
+    else
+      redirect "/"
+    end
   end
 end
