@@ -21,14 +21,19 @@
                 %a.pure-menu-link{ href: "/groups" }
                   Groups
               %li.pure-menu-item
-                %a.pure-menu-item{ href: "#" }
-                  About
+                - if current_user
+                  %a.pure-menu-item{ href: "/logout" } Logout
+                - else
+                  %a.pure-menu-item{ href: "/login" } Login
 
     %div#main
       %div.header
         %h1= @page_title if @page_title
         %h2= @page_subtitle if @page_subtitle
       %div.content
+        - if session[:flash_message]
+          = session[:flash_message]
+          - session[:flash_message] = nil
         = yield
         -# Load javascript at end so as not to delay earlier content
         %script{ src: '/js/ui.js' }
