@@ -23,5 +23,6 @@ class LoginController < ApplicationController
 
   get '/logout' do
     @current_user = session[:user_id] = nil
+    redirect '/'
   end
 end
