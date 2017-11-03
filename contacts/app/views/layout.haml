@@ -24,6 +24,9 @@
                 %a.pure-menu-link{ href: "/groups" }
                   Groups
               %li.pure-menu-item
+                %a.pure-menu-link{ href: "/contacts" }
+                  Contacts
+              %li.pure-menu-item
                 - if current_user
                   %a.pure-menu-item{ href: "/logout" } Logout
                 - else
@@ -39,5 +42,3 @@
             = session[:flash_message]
           - flash_message_clear
         = yield
-        -# Load javascript at end so as not to delay earlier content
-

@@ -1,0 +1,24 @@
+= haml :'contacts/header_links'
+
+%table.pure-table.pure-table-bordered
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Phone
+      %th Zip
+      %th Notes
+      %th Delete
+
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= contact.name
+        %td= contact.email
+        %td= contact.phone
+        %td= contact.zip
+        %td= contact.notes
+        %td
+          %form{ method: 'GET', action: "/contact/#{contact.id}/delete" }
+            - onclick_js = "return confirm('Delete contact: #{contact.name}?')"
+            %input{ type: 'image', src: '/icons/trash.svg', onclick: onclick_js }

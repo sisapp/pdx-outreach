@@ -6,9 +6,14 @@
       %th Name
       %th Description
       %th Creation date
+      %th Delete
   %tbody
     - @groups.each do |group|
       %tr
         %td= group.name
         %td= group.description
         %td= group.created_at
+        %td
+          %form{ method: 'GET', action: "/group/#{group.id}/delete" }
+            - onclick_js = "return confirm('Delete group: #{group.name}?')"
+            %input{ type: 'image', src: '/icons/trash.svg', onclick: onclick_js }

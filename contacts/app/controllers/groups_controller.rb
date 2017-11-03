@@ -21,4 +21,10 @@ class GroupsController < ApplicationController
     redirect '/groups'
   end
 
+  get '/group/:id/delete' do
+    flash_success('Group successfully deleted')
+    Group.destroy(params[:id])
+    redirect '/groups'
+  end
+
 end
