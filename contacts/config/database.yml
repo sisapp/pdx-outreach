@@ -1,7 +1,13 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
   database: pdxo4j
   pool: 2
   username: slackz
   password: <%= ENV['DATABASE_PW'] %>
+
+development:
+  <<: *default
+
+production:
+  <<: *default
