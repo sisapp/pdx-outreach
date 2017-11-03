@@ -1,0 +1,2 @@
+export RACK_ENV=development
+export DATABASE_PASSWORD=slackz

@@ -4,4 +4,4 @@ development:
   database: pdxo4j
   pool: 2
   username: slackz
-  password: slackz
+  password: <%= ENV['DATABASE_PW'] %>

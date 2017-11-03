@@ -3,7 +3,7 @@
 require_relative './app/controllers/application_controller'
 # map the controllers to routes
 run ApplicationController
-# use ContactsController
-# use GroupsController
-# use LoginController
+use ContactsController
+use GroupsController
+use LoginController
 
