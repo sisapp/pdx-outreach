@@ -5,29 +5,33 @@
   %fieldset
     %label{ for: :name }
       Name:
-    %input#name{ type: 'text',
-                 placeholder: 'Contact name',
-                 name: 'contact[name]' }
+    %input#name{ type: 'text', name: 'contact[name]' }
 
     %label{ for: :email }
       Email:
-    %input#email{ type: 'email', placeholder: 'Contact email',
-                  name: 'contact[email]' }
+    %input#email{ type: 'email', name: 'contact[email]' }
 
     %label{ for: :phone }
       Phone:
-    %input#phone{ type: 'tel', placeholder: 'Contact phone number',
-                  name: 'contact[phone]' }
+    %input#phone{ type: 'tel', name: 'contact[phone]' }
+
     %label{ for: :zip }
       Zip Code:
-    %input#phone{ type: 'text', placeholder: 'Contact zip code',
+    %input#phone{ type: 'text',
                 name: 'contact[zip]' }
 
+    %label{ for: :groups }
+      Groups:
+    %select#groups{ multiple: true, name: 'groups[]'}
+      - @groups.each do |group|
+        %option{ value: group.id }
+          = group.name
+
+    %label{ for: :notes } Notes:
     %textarea#notes{ type: 'text',
-                         placeholder: 'Notes about contact',
-                         name: 'contact[notes]',
-                         rows: 10,
-                         cols: 30 }
+                     name: 'contact[notes]',
+                     rows: 10,
+                     cols: 30 }
 
     %button.pure-button.pure-button-primary{ type: 'submit' }
       Submit

@@ -12,12 +12,15 @@ class ContactsController < ApplicationController
   end
 
   get '/contacts/new' do
+    @groups = Group.select(:id, :name).order(:name)
     @page_subtitle = 'New contact'
     haml :'contacts/new'
   end
 
   post '/contacts/new' do
-    Contact.create(params[:contact])
+    c = Contact.create(params[:contact])
+    c.group_ids = params['groups']
+    flash_success('Contact successfully saved')
     redirect '/contacts'
   end
 

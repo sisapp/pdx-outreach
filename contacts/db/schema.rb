@@ -25,20 +25,20 @@ ActiveRecord::Schema.define(version: 20171030070102) do
     t.index ["email"], name: "index_contacts_on_email", unique: true
   end
 
+  create_table "contacts_groups", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["contact_id"], name: "index_contacts_groups_on_contact_id"
+    t.index ["group_id", "contact_id"], name: "index_contacts_groups_on_group_id_and_contact_id", unique: true
+    t.index ["group_id"], name: "index_contacts_groups_on_group_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.index ["name"], name: "index_groups_on_name", unique: true
-  end
-
-  create_table "groups_contacts", id: false, force: :cascade do |t|
-    t.bigint "group_id", null: false
-    t.bigint "contact_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["contact_id"], name: "index_groups_contacts_on_contact_id"
-    t.index ["group_id", "contact_id"], name: "index_groups_contacts_on_group_id_and_contact_id", unique: true
-    t.index ["group_id"], name: "index_groups_contacts_on_group_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20171030070102) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "groups_contacts", "contacts"
-  add_foreign_key "groups_contacts", "groups"
+  add_foreign_key "contacts_groups", "contacts"
+  add_foreign_key "contacts_groups", "groups"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
 end

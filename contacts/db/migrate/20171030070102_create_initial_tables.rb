@@ -32,18 +32,18 @@ class CreateInitialTables < ActiveRecord::Migration[5.1]
     add_foreign_key :groups_users, :users
 
 
-    create_table :groups_contacts, id: false do |t|
+    create_table :contacts_groups, id: false do |t|
       t.references :group, index: true, null: false
       t.references :contact, index: true, null: false
       t.datetime :created_at, null: false
     end
-    add_index :groups_contacts, [:group_id, :contact_id], unique: true
-    add_foreign_key :groups_contacts, :groups
-    add_foreign_key :groups_contacts, :contacts
+    add_index :contacts_groups, [:group_id, :contact_id], unique: true
+    add_foreign_key :contacts_groups, :groups
+    add_foreign_key :contacts_groups, :contacts
   end
 
   def down
-    tables = [:groups_users, :groups_contacts, :users, :contacts, :groups]
+    tables = [:groups_users, :contacts_groups, :users, :contacts, :groups]
     tables.each do |tbl|
       drop_table tbl
     end
