@@ -4,13 +4,14 @@ require 'haml'
 
 # application_controller.rb
 class ApplicationController < Sinatra::Base
+  Dir.glob('app/{helpers,controllers,models}/*.rb').each { |f| require_relative "../../#{f}" }
   PUBLIC_ROUTES = ['/', '/login']
 
-  helpers ApplicationHelper
   # set folder for templates to ../views, but make the path absolute
   set :views, File.expand_path('../../views', __FILE__)
   set :root, File.expand_path('../../..', __FILE__)
   set :server, :puma
+
 
   # TODO: configure logging
   # configure :production, :development do

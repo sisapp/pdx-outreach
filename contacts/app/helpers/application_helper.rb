@@ -1,5 +1,3 @@
-require 'haml'
-
 module ApplicationHelper
 
   def logged_in?
