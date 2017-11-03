@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   # set folder for templates to ../views, but make the path absolute
   set :views, File.expand_path('../../views', __FILE__)
   set :root, File.expand_path('../../..', __FILE__)
+  set :server, :puma
 
   # TODO: configure logging
   # configure :production, :development do
