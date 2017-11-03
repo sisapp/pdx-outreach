@@ -12,11 +12,11 @@ class LoginController < ApplicationController
     u = params['user']
     user = User.find_by(email: u['email'])
     if(user && user.authenticate(u['password']))
-      session[:flash_message] = 'Login successful!'
+      flash_success('Login successful!')
       session[:user_id] = user.id
       redirect '/'
     else
-      session[:flash_message] = 'Login failed :('
+      flash_fail('Invalid login credentials.')
       redirect '/login'
     end
   end

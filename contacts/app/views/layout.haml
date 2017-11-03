@@ -6,8 +6,11 @@
       Org Contacts
     %meta{ charset: 'utf-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    -# Include css / javascript assets (TODO: caching?)
     %link{ rel: 'stylesheet', href: '/css/pure-min.css' }
     %link{ rel: 'stylesheet', href: '/css/layouts/side-menu.css' }
+    %link{ rel: 'stylesheet', href: '/css/custom.css' }
+    %script{ src: '/js/ui.js', async: true }
 
   %body
     %div#layout
@@ -32,8 +35,9 @@
         %h2= @page_subtitle if @page_subtitle
       %div.content
         - if session[:flash_message]
-          = session[:flash_message]
-          - session[:flash_message] = nil
+          %div{ class: session[:flash_message_type] }
+            = session[:flash_message]
+          - flash_message_clear
         = yield
         -# Load javascript at end so as not to delay earlier content
-        %script{ src: '/js/ui.js' }
+

@@ -19,12 +19,13 @@ class ApplicationController < Sinatra::Base
 
   before do
     unless(logged_in? || PUBLIC_ROUTES.include?(request.path_info))
-      session[:flash_message] = 'Please login'
+      flash_fail('Please login to proceed.')
       redirect '/login'
     end
   end
 
   get '/' do
+    cached_css('base-min')
     @page_title = 'Home'
     haml :index
   end
