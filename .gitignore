@@ -2,5 +2,5 @@
 *.swo
 
 hugo
-config.*
+config.toml
 public/
